@@ -1,3 +1,60 @@
-<h1 style="color:blue;">
+<h3 style="color:blue;">
     {{titulo}}
-</h1>
+</h3>
+
+
+    <strong>Empleado Estrella:</strong>
+    <br/><br/>
+    <div *ngIf="trabajador_externo == true"> 
+        <button (click)="cambiarExterno(false)">Mostrar empleado</button>
+        <ul>
+            <li>{{trabajadores[1].nombre}}</li>
+            <li>{{trabajadores[1].edad}}</li>
+            <li>{{trabajadores[1].cargo}}</li>
+            <li *ngIf="trabajadores[1].contratado == true">Está Contratado</li>
+            <li *ngIf="trabajadores[1].contratado == false">NO Está Contratado</li>
+        </ul>
+    </div>
+
+    <div *ngIf="trabajador_externo == false"> 
+        <button (click)="cambiarExterno(true)">Mostrar trabajador</button>
+        <ul>
+            <li>{{empleado.nombre}}</li>
+            <li>{{empleado.edad}}</li>
+            <li>{{empleado.cargo}}</li>
+            <li *ngIf="empleado.contratado == true">Está Contratado</li>
+            <li *ngIf="empleado.contratado == false">NO Está Contratado</li>
+        </ul>
+    </div>
+    <hr/>
+    <h3>Listado de empleados</h3>
+
+    <ul>
+        <li *ngFor="let empleado of trabajadores;let i = index;">
+            <strong>Empleado {{i+1}}:</strong>
+            <ul>
+                <li>{{empleado.nombre}}</li>
+                <li>{{empleado.edad}}</li>
+                <li>{{empleado.cargo}}</li>
+                <li *ngIf="empleado.contratado == true">Está Contratado</li>
+                <li *ngIf="empleado.contratado == false">NO Está Contratado</li>
+            </ul>
+        </li>
+    </ul>
+    <hr/>
+
+    <h3>Colores switch</h3>
+    <ul [ngSwitch]="color">
+        <li *ngSwitchCase="'red'" [ngStyle]="{'background':color,
+                                                'color':'white',
+                                                'padding':'20px'}">
+        Es de color ROJO</li>
+        <li *ngSwitchCase="'green'" [ngStyle]="{'background':color,
+                                                'color':'white',
+                                                'padding':'20px'}">
+        Es de color VERDE</li>
+        <li *ngSwitchCase="'blue'" [ngStyle]="{'background':color,
+                                                'color':'white',
+                                                'padding':'20px'}">
+        Es de color AZUL</li>
+    </ul>
