@@ -1,8 +1,18 @@
 <h3 style="color:blue;">
     {{titulo}}
 </h3>
+<hr/>
+<h3>Selector de colores:</h3>
+<input type="text" [(ngModel)]="color_seleccionado"/>
+<div [ngStyle]="{'background':color_seleccionado,
+                'width':'200px',
+                'height' : '200px',
+                'float' : 'right',
+                'margin-right': '69%'}">
+</div>
+<div style="clear:both"></div>
 
-
+<hr/>
     <strong>Empleado Estrella:</strong>
     <br/><br/>
     <div *ngIf="trabajador_externo == true"> 
