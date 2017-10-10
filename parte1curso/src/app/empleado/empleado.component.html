@@ -3,7 +3,18 @@
 </h3>
 <hr/>
 <h3>Selector de colores:</h3>
+<button (click)="logColorSeleccionado()">Mostrar Log</button>
 <input type="text" [(ngModel)]="color_seleccionado"/>
+
+<pre 
+    [style.border]="color_seleccionado == 'red' ? '5px solid black' : '1px solid green'"
+    [ngClass]="{
+        fondoAzul : color_seleccionado == 'blue',
+        fondoVerde : color_seleccionado == 'green',
+        letraGrande : true
+    }">
+    <strong>Color seleccionado:</strong>
+    {{color_seleccionado}}</pre>
 <div [ngStyle]="{'background':color_seleccionado,
                 'width':'200px',
                 'height' : '200px',
