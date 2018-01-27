@@ -27,6 +27,7 @@ l
     }
 
     onSubmit(){
-        alert(this.coche.nombre+" - "+this.coche.caballaje+" - "+this.coche.color);
+        this.coches.push(this.coche);
+        this.coche = new Coche("","","");
     }
 }

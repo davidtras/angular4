@@ -24,5 +24,14 @@
             El color no es válido
         </span>
     </p>
-    <input type="submit" value="Guardar"/>
+    <input type="submit" value="Guardar" [disabled]="!formCoche.form.valid"/>
 </form>
+
+<div style="">
+    <h4>Listado de coches</h4>
+    <ul>
+        <li *ngFor="let coche of coches">
+            {{coche.nombre}} - {{coche.caballaje}} - {{coche.color}}
+        </li>
+    </ul>
+</div>
