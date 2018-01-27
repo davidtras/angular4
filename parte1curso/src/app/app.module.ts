@@ -9,6 +9,7 @@ import { EmpleadoComponent } from './empleado/empleado.component';
 import { HomeComponent } from './home/home.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { CochesComponent } from './coches/coches.component';
+import { PlantillasComponent } from './plantillas/plantillas.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CochesComponent } from './coches/coches.component';
     EmpleadoComponent,
     HomeComponent,
     ContactoComponent,
-    CochesComponent
+    CochesComponent,
+    PlantillasComponent
   ],
   imports: [
     BrowserModule,

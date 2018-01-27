@@ -11,6 +11,7 @@ export class CochesComponent{
 
     public coche: Coche;
     public coches:Array<Coche>;
+    public articulos;
 l
     constructor(
         private _service:PeticionesService
@@ -23,7 +24,18 @@ l
     }
 
     ngOnInit(){
-        alert(this._service.getPrueba());
+        this._service.getArticulos().subscribe(
+            result => {
+                this.articulos = result;
+                if(!this.articulos){
+                    console.log(result);                    
+                }
+            },
+            error => {
+                var errorMensaje = <any>error;
+                console.log(errorMensaje);
+            }
+        );
     }
 
     onSubmit(){

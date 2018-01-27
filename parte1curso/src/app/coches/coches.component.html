@@ -27,11 +27,21 @@
     <input type="submit" value="Guardar" [disabled]="!formCoche.form.valid"/>
 </form>
 
-<div style="">
+<div class="listado">
     <h4>Listado de coches</h4>
     <ul>
         <li *ngFor="let coche of coches">
             {{coche.nombre}} - {{coche.caballaje}} - {{coche.color}}
         </li>
     </ul>
+</div>
+
+<div class="listado">
+    <h3>Listado de articulos</h3>
+    <ul *ngIf="articulos">
+        <li *ngFor="let articulo of articulos">
+            {{articulo.id}} - {{articulo.title}}
+        </li>
+    </ul>
+    <span *ngIf="!articulos">Cargando...</span>
 </div>
