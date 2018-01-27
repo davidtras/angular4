@@ -1,6 +1,6 @@
 <h1>Componente de Coches</h1>
 
-<form #formCoche="ngForm" (ngSubmit)="onSubmit()">
+<form #formCoche="ngForm" (ngSubmit)="onSubmit();formCoche.reset();">
     <p>
         <label>Nombre:</label>
         <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required/>
