@@ -1,0 +1,16 @@
+<h3>{{titulo}}</h3>
+<hr/>
+<div *ngIf="productos then listado else cargando"></div>
+
+
+<ng-template #listado>
+    <ul>
+        <li *ngFor="let producto of productos">
+                <strong>{{producto.id}}</strong> - <strong>{{producto.nombre}}</strong> - <strong>{{producto.imagen}}</strong>
+        </li>
+    </ul>
+</ng-template>
+
+<ng-template #cargando>
+Cargando listado...
+</ng-template>
