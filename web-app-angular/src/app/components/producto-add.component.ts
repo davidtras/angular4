@@ -25,7 +25,7 @@ export class ProductoAddComponent{
     }
 
     onSubmit(){
-        if(this.filesToUpload.length >= 1){
+        if(this.filesToUpload && this.filesToUpload.length >= 1){
             console.log('IIIIIIIIFFFFFFFFF');
             this._service.subirArchivo([],this.filesToUpload).then((result) => {
                     this.resultUpload =result;

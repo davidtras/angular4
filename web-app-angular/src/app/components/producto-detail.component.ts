@@ -5,13 +5,13 @@ import { Producto } from '../models/producto';
 import {GLOBAL} from '../services/global';
 
 @Component({
-    selector: 'productos-list',
-    templateUrl: '../views/productos-list.html',
+    selector: 'producto-detail',
+    templateUrl: '../views/producto-detail.html',
     providers: [ProductoService]
 })
-export class ProductosListComponent{
+export class ProductoDetailComponent{
     public titulo:string;
-    public productos:Producto[];
+    public producto:Producto;
     public urlImages;
 
     constructor(
@@ -19,19 +19,27 @@ export class ProductosListComponent{
         private _router:Router,
         private _service:ProductoService
     ){
-        this.titulo = 'Listado de Productos';
+        this.titulo = 'Detalle del Producto';
         this.urlImages = GLOBAL.urlImages;
     }
 
     ngOnInit(){
-        console.log('Página ProductosComponent cargada');
-        this._service.getProductos().subscribe(
+        console.log('Página ProductoDetail cargada');
+        this._route.params.forEach((params:Params) => {
+            let id = params['id'];
+            this.getProducto(id);
+        })
+    } 
+
+    getProducto(id){
+        this._service.getProducto(id).subscribe(
             result =>{
 
                 if(result.code == 200){
-                    this.productos = result.lstProductos;
+                    this.producto = result.lstProductos[0];
                 }else{
-                    alert('Se ha producido un error');
+                    this._router.navigate(['/productos-list']);
+                    alert('El producto seleccionado no existe');
                 }
                 
             },

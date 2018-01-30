@@ -23,6 +23,11 @@ export class ProductoService{
         return this._http.get(llamada).map(res=>res.json());
     }
 
+    getProducto(id){
+        var llamada:string = this.url+'producto/'+id; 
+        return this._http.get(llamada).map(res=>res.json());
+    }
+
     addProducto(producto:Producto){
         var llamada:string = this.url+'save-producto'; 
         let json = JSON.stringify(producto);
