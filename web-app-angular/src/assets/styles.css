@@ -85,6 +85,10 @@ footer{
     display: block;
 }
 
+.imagen_preview{
+    height: 300px !important;
+}
+
 .imagen_relleno{
    background: #ccc;
    width: 100%;

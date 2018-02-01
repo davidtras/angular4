@@ -13,6 +13,7 @@ export class ProductosListComponent{
     public titulo:string;
     public productos:Producto[];
     public urlImages;
+    public confirmado;
 
     constructor(
         private _route:ActivatedRoute,
@@ -21,10 +22,15 @@ export class ProductosListComponent{
     ){
         this.titulo = 'Listado de Productos';
         this.urlImages = GLOBAL.urlImages;
+        this.confirmado = null;
     }
 
     ngOnInit(){
         console.log('Página ProductosComponent cargada');
+        this.obtenerListado();
+    }
+
+    obtenerListado(){
         this._service.getProductos().subscribe(
             result =>{
 
@@ -39,5 +45,32 @@ export class ProductosListComponent{
                 console.log(<any>error);
             }
         );
+    }
+
+    borrarProducto(id){
+        this._service.borrarProducto(id).subscribe(
+            result =>{
+
+                if(result.code == 200){
+                    alert('Se ha eliminado el producto correctamente');
+                    this.obtenerListado();
+                }else{
+                    alert('Se ha producido un error');
+                }
+                
+            },
+            error => {
+                alert(error);
+                console.log(<any>error);
+            }
+        );
+    }
+
+    borrarConfirm(id){
+        this.confirmado = id;
+    }
+
+    cancelarConfirm(){
+        this.confirmado = null;
     }
 }

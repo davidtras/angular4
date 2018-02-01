@@ -16,11 +16,15 @@
                 <div class="caption">
                     <h3>{{producto.nombre}}</h3>
                     <p>{{producto.precio}} €</p>
-                    <p>
-                        <a [routerLink]="['/producto',producto.id]" href="#" class="btn btn-md btn-primary">Ver</a>
-                        <a href="#" class="btn btn-md btn-warning">Editar</a>
-                        <a href="#" class="btn btn-md btn-danger">Eliminar</a>
-                    </p>
+                    <div class="botones" *ngIf="confirmado != producto.id">
+                        <a [routerLink]="['/producto',producto.id]" class="btn btn-md btn-primary">Ver</a>
+                        <a [routerLink]="['/editar',producto.id]"  class="btn btn-md btn-warning">Editar</a>
+                        <a (click)="borrarConfirm(producto.id)" class="btn btn-md btn-danger">Eliminar</a>
+                    </div>
+                    <div class="seguro" *ngIf="confirmado == producto.id">
+                        <a (click)="borrarProducto(producto.id)" class="btn btn-md btn-success">Confirmar</a>
+                        <a (click)="cancelarConfirm()" class="btn btn-md btn-danger">Cancelar</a>
+                    </div>
                 </div>
             </div>
         </div>

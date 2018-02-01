@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component,ViewChild} from '@angular/core';
 import {Router,ActivatedRoute,Params} from '@angular/router';
 import {ProductoService} from '../services/producto.service';
 import { Producto } from '../models/producto';
@@ -12,8 +12,12 @@ export class ProductoAddComponent{
     
     public titulo:string;
     public producto:Producto;
+    public urlPreview;
     public filesToUpload;
     public resultUpload;
+    
+    @ViewChild('uploader')
+    uploader: any;
 
     constructor(
         private _route:ActivatedRoute,
@@ -26,7 +30,6 @@ export class ProductoAddComponent{
 
     onSubmit(){
         if(this.filesToUpload && this.filesToUpload.length >= 1){
-            console.log('IIIIIIIIFFFFFFFFF');
             this._service.subirArchivo([],this.filesToUpload).then((result) => {
                     this.resultUpload =result;
                     this.guardarProducto(this.resultUpload.filename);
@@ -36,7 +39,6 @@ export class ProductoAddComponent{
                 }
             );
         }else{
-            console.log('EEEEEEELSEEEEEE');
             this.guardarProducto("");
         }
         
@@ -70,6 +72,19 @@ export class ProductoAddComponent{
 
     fileChangeEvent(fileInput:any){
         this.filesToUpload = <Array<File>> fileInput.target.files;
-        console.log(this.filesToUpload);
+        if (this.filesToUpload && this.filesToUpload[0]) {
+            var reader = new FileReader();
+        
+            reader.onload = (event:any) => {
+              this.urlPreview = event.target.result;
+            }
+        
+            reader.readAsDataURL(this.filesToUpload[0]);
+          }
+    }
+
+    limpiarImagen(){
+        this.uploader.nativeElement.value = "";
+        this.urlPreview="";
     }
 }

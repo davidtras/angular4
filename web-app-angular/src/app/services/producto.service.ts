@@ -36,6 +36,19 @@ export class ProductoService{
         return this._http.post(llamada,json,{headers:headers}).map(res=>res.json());
     }
 
+    updateProducto(producto:Producto){
+        var llamada:string = this.url+'update-producto'; 
+        let json = JSON.stringify(producto);
+        let headers = new Headers({'Content-type':'application/json;charset=UTF-8'});
+
+        return this._http.post(llamada,json,{headers:headers}).map(res=>res.json());
+    }
+
+    borrarProducto(id){
+        var llamada:string = this.url+'delete-producto/'+id; 
+        return this._http.get(llamada).map(res=>res.json());
+    }
+
     subirArchivo(params:Array<string>,files:Array<File>){
         let url :string = this.url+'upload-file'; 
         return new Promise((resolve,reject) => {

@@ -8,8 +8,8 @@ import { HomeComponent} from './components/home.component';
 import { ProductosListComponent} from './components/productos-list.component';
 import { ProductoAddComponent} from './components/producto-add.component';
 import { ProductoDetailComponent} from './components/producto-detail.component';
+import { ProductoUpdateComponent} from './components/producto-update.component';
 import { ErrorComponent} from './components/error.component';
-
 import { routing,appRoutingProviders} from './app.routing';
 
 @NgModule({
@@ -19,6 +19,7 @@ import { routing,appRoutingProviders} from './app.routing';
     ProductosListComponent,
     ProductoAddComponent,
     ProductoDetailComponent,
+    ProductoUpdateComponent,
     ErrorComponent
   ],
   imports: [
