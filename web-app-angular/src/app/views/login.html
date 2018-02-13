@@ -1,0 +1,20 @@
+<h3>{{titulo}}</h3>
+<hr/>
+
+<form #formLogin="ngForm" (ngSubmit)="onSubmit()" class="col-lg-3" id="form-login">
+
+    <label>Nombre
+        <span *ngIf="!nombre.valid && nombre.touched" class="label label-danger">El nombre no es válido</span>        
+    </label>
+    <input type="text" class="form-control"
+        #nombre="ngModel" name="nombre" [(ngModel)]="user.nombre" required/>
+    
+    <label>Contraseña
+            <span *ngIf="!pass.valid && pass.touched" class="label label-danger">La contraseña no es válida</span>        
+    </label>
+    <input type="text"  class="form-control" 
+        #pass="ngModel" name="pass" [(ngModel)]="user.pass" required/>
+    <br/>
+    <input type="submit" [disabled]="!formLogin.form.valid" value="Aceptar" class="btn btn-success"/>
+
+</form>

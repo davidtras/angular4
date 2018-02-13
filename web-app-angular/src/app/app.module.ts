@@ -9,6 +9,7 @@ import { ProductosListComponent} from './components/productos-list.component';
 import { ProductoAddComponent} from './components/producto-add.component';
 import { ProductoDetailComponent} from './components/producto-detail.component';
 import { ProductoUpdateComponent} from './components/producto-update.component';
+import { LoginComponent} from './components/login.component';
 import { ErrorComponent} from './components/error.component';
 import { routing,appRoutingProviders} from './app.routing';
 
@@ -20,6 +21,7 @@ import { routing,appRoutingProviders} from './app.routing';
     ProductoAddComponent,
     ProductoDetailComponent,
     ProductoUpdateComponent,
+    LoginComponent,
     ErrorComponent
   ],
   imports: [

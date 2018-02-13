@@ -6,11 +6,13 @@ import { ProductosListComponent} from './components/productos-list.component';
 import { ProductoAddComponent} from './components/producto-add.component';
 import { ProductoDetailComponent} from './components/producto-detail.component';
 import { ProductoUpdateComponent} from './components/producto-update.component';
+import { LoginComponent} from './components/login.component';
 import { ErrorComponent} from './components/error.component';
 
 
 const appRoutes:Routes = [
     {path:'',component:HomeComponent},
+    {path:'login',component:LoginComponent},
     {path:'home',component:HomeComponent},
     {path:'productos-list',component:ProductosListComponent},
     {path:'producto-add',component:ProductoAddComponent},
